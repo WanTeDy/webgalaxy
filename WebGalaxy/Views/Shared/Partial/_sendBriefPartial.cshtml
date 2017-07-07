@@ -1,0 +1,59 @@
+﻿@model WebGalaxy.Models.BriefModel
+<style>
+    .error {
+        font-size: 12px;
+        color: red;
+    }
+</style>
+
+<div>
+    <a href="#close" title="Закрыть" class="close">X</a>
+    @using (Ajax.BeginForm("SendBrief", "Email", null, new AjaxOptions
+    {
+        UpdateTargetId = "OpenModal",
+        OnSuccess = "FeedbackSendComplete"
+    }, new { @id = "sendBrief_form" }))
+
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <div class="formflex_check">
+            <p>К какому типу вы бы отнесли разрабатываемый сайт?</p>
+            <p>
+                @Html.CheckBoxFor(m=>m.Promo, new { @class = "checkbox" }) промо-сайт<Br>
+                @Html.CheckBoxFor(m => m.Corporative, new { @class = "checkbox" }) корпоративный сайт<Br>
+                @Html.CheckBoxFor(m => m.Shop, new { @class = "checkbox" }) онлайн-магазин<Br>
+                @Html.CheckBoxFor(m => m.Cutaway, new { @class = "checkbox" }) сайт-визитка<Br>
+                @Html.CheckBoxFor(m => m.Promo, new { @class = "checkbox"}) блог
+            </p>
+        </div>
+
+
+        <div class="formflex">
+            <h4>Как называется ваша компания? Род деятельности компании? </h4>
+            <p><textarea name="AboutCompany" placeholder="Сообщение" required ></textarea></p>
+        </div>
+        <div class="formflex">
+            <h4>Приведите примеры сайтов, которые вам нравятся</h4>
+            <p><textarea name="SiteExamples" placeholder="Сообщение" required ></textarea></p>
+        </div>
+        <div class="formflex">
+            <h4>Какие языки будут использоваться на вашем сайте?</h4>
+            <p><textarea name="Languages" placeholder="Сообщение" required ></textarea></p>
+        </div>
+        <div class="formflex">
+            <h4>Сроки реализации и бюджет проекта</h4>
+            <p><textarea name="RealizationDates" placeholder="Сообщение" required ></textarea></p>
+        </div>
+
+        <div class="formflex_contact">
+            <h4>Ваши контактные данные:</h4>
+            <input name="Name" maxlength="25" placeholder="Имя" required />
+            <input name="Email" type="email" maxlength="35" placeholder="Email" />
+            <input name="Phone" type="Tel" maxlength="20" placeholder="Телефон" required />
+        </div>
+        <button class="applicationButton" type="submit" form="sendBrief_form">Отправить</button>
+    }
+
+</div>

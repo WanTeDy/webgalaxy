@@ -1,0 +1,25 @@
+﻿@model WebGalaxy.Models.MailModel
+<style>
+    .error {
+        font-size: 12px;
+        color: red;
+    }
+</style>
+
+@using (Ajax.BeginForm("SendMail", "Email", null, new AjaxOptions
+{
+    UpdateTargetId = "sendMail",
+    OnSuccess = "MailSendComplete"
+}, new { @id = "sendmail_form" }))
+
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <input name="Name" maxlength="25" placeholder="Имя" required />
+    <input name="Email" type="email" maxlength="35" placeholder="Email" />
+    <input name="Phone" type="Tel" maxlength="20" placeholder="Телефон" required />
+    <p><textarea name="Message" placeholder="Сообщение" required></textarea></p>
+
+    <button class="applicationButton" type="submit" form="sendmail_form">Отправить</button>
+}

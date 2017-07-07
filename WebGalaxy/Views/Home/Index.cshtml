@@ -1,31 +1,518 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    Layout = null;
 }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>WebGalaxy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Web Development" />
+    <meta name="keywords" content="website, web, development, webdevelopment, design, webdesign" />
+    <link rel="shortcut icon" href="~/Content/img/17px.png">
+    <link rel="stylesheet" type="text/css" href="~/Content/reset.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/style.css" />
+    <script type="text/javascript" src="~/Scripts/modernizr.custom.79639.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.ba-cond.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.slitslider.js"></script>
+    
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+    <script type="text/javascript">
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        function MailSendComplete(data, resul, xhr) {
+            if (data.url) {
+                // if the server returned a JSON object containing an url
+                // property we redirect the browser to that url
+                window.location.href = data.url;
+            }
+        }
+
+        function FeedbackSendComplete(data, resul, xhr) {
+            if (data.url) {
+                // if the server returned a JSON object containing an url
+                // property we redirect the browser to that url
+                window.location.href = data.url;
+            }
+        }
+
+        $(function () {
+
+            var Page = (function () {
+
+                var $navArrows = $('#nav-arrows'),
+                    $nav = $('#nav-dots > span'),
+                    slitslider = $('#slider').slitslider({
+                        onBeforeChange: function (slide, pos) {
+
+                            $nav.removeClass('nav-dot-current');
+                            $nav.eq(pos).addClass('nav-dot-current');
+
+                        }
+                    }),
+
+                    init = function () {
+
+                        initEvents();
+
+                    },
+                    initEvents = function () {
+
+                        // add navigation events
+                        $navArrows.children(':last').on('click', function () {
+
+                            slitslider.next();
+                            return false;
+
+                        });
+
+                        $navArrows.children(':first').on('click', function () {
+
+                            slitslider.previous();
+                            return false;
+
+                        });
+
+                        $nav.each(function (i) {
+
+                            $(this).on('click', function (event) {
+
+                                var $dot = $(this);
+
+                                if (!slitslider.isActive()) {
+
+                                    $nav.removeClass('nav-dot-current');
+                                    $dot.addClass('nav-dot-current');
+
+                                }
+
+                                slitslider.jump(i + 1);
+                                return false;
+
+                            });
+
+                        });
+
+                    };
+
+                return { init: init };
+
+            })();
+
+            Page.init();
+
+            /**
+             * Notes:
+             *
+             * example how to add items:
+             */
+
+            /*
+
+            var $items  = $('<div class="sl-slide sl-slide-color-2" data-orientation="horizontal" data-slice1-rotation="-5" data-slice2-rotation="10" data-slice1-scale="2" data-slice2-scale="1"><div class="sl-slide-inner bg-1"><div class="sl-deco" data-icon="t"></div><h2>some text</h2><blockquote><p>bla bla</p><cite>Margi Clarke</cite></blockquote></div></div>');
+
+            // call the plugin's add method
+            ss.add($items);
+
+            */
+
+        });
+    </script>
+    <!-- horizontal slider -->
+    <!-- <script type="text/javascript" src="~/Scripts/jquery-1.5.min.js"></script> -->
+    <script type="text/javascript" src="~/Scripts/jquery.jcarousel.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            // Initialise the first and second carousel by class selector.
+            // Note that they use both the same configuration options (none in this case).
+            jQuery('.d-carousel .carousel').jcarousel({
+                scroll: 1
+            });
+        });
+    </script>
+    <!-- faNCYBOX -->
+    <link rel="stylesheet" type="text/css" href="~/Content/fancybox/jquery.fancybox.css">
+    <!-- <script type="text/javascript" src="~/Content/fancybox/jquery-1.3.2.min.js"></script> -->
+    <script type="text/javascript" src="~/Content/fancybox/jquery.easing.1.3.js"></script>
+    <script type="text/javascript" src="~/Content/fancybox/jquery.fancybox-1.2.1.pack.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("a.first").fancybox();
+            $("a.two").fancybox();
+            $("a.video").fancybox({ "frameWidth": 560, "frameHeight": 340 });
+            $("a.content").fancybox({ "frameWidth": 600, "frameHeight": 300 });
+        });
+    </script>
+    <!-- // -->
+    <!-- scroll to block -->
+    <!-- <script src="http://code.jquery.com/jquery-1.11.1.js"></script> -->
+    <script type="text/javascript">
+        var zTop = 1;
+        //$('a').on('click', function (e) {
+        //    $("html, body").animate({
+        //        scrollTop: $($(this).attr("href")).offset().top + "px"
+        //    }, {
+        //        duration: 500,
+        //        easing: "swing"
+        //    });
+        //    return false;
+        //})
+
+        // Trigger first section animation
+        //$('a[href="#a"]').trigger('click');
+
+        $(document).ready(function () {
+            $('a.anchor[href^="#"]').click(function () {
+                var el = $(this).attr('href');
+                $('body').animate({
+                    scrollTop: $(el).offset().top
+                }, 2000);
+                return false;
+            });
+        });
+
+        // Set height
+        $(window).on('resize', function () {
+            var wh = $(window).height();
+            $('article, section').height(wh);
+            $('.active').css({ top: 0 });
+            $('.above').css({ top: -wh });
+            $('.below').css({ top: wh });
+        }).trigger('resize');
+    </script>
+    <!-- // -->
+    <!-- to top -->
+    <script>
+        function showFeedbackForm(event) {
+            event.preventDefault();
+            $('#feedbackBtn').fadeOut(500);
+            $('#sendFeedback').fadeIn(2000);
+        };
+
+        $(function () {
+            $(window).scroll(function () {
+                if ($(this).scrollTop() != 0) {
+                    $('#toTop').fadeIn();
+                } else {
+                    $('#toTop').fadeOut();
+                }
+            });
+            $('#toTop').click(function () {
+                $('body,html').animate({ scrollTop: 0 }, 900);
+            });
+        });
+    </script>
+    <!-- // -->
+
+
+</head>
+<body>
+    <div class="container demo-1">
+        <div class="logo">
+            <img src="~/Content/img/logo2.png">
+            </a>
+        </div>
+        <div class="language">
+            <div class="d"><a href="#"><p>ENG</p></a></div>
+            <div class="d"><a href="#"><p>RU</p></a></div>
+        </div>
+        <nav class="codrops-demos">
+            <div class="d"><a class="anchor" href="#about_us">.О нас</a></div>
+            <div class="d"><a class="anchor" href="#what_we_do">.Услуги</a></div>
+            <div class="d"><a class="anchor" href="#portfolio">.Портфолио</a></div>
+            <div class="d"><a class="anchor" href="#contacts">.Контакты</a></div>
+        </nav>
+        <div id="slider" class="sl-slider-wrapper">
+            <div class="sl-slider">
+                <div class="sl-slide bg-1" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2" style="background-image: url(Content/img/demo-1-bg.jpg);">
+                    <div class="sl-slide-inner">
+                        <h2 style="font-weight:900">Web <span style="font-weight:300"> Galaxy</span></h2>
+                        <blockquote><p>В будущем на рынке останется два вида компаний: те кто в Интернете и те, кто вышел из бизнеса.</p><cite>Билл Гейтс</cite></blockquote>
+                        <p class="btn"><a class="anchor" href="#what_we_do">Что мы делаем?</a></p>
+                    </div>
+                </div>
+
+                <div class="sl-slide bg-2" data-orientation="vertical" data-slice1-rotation="10" data-slice2-rotation="-15" data-slice1-scale="1.5" data-slice2-scale="1.5" style="background-image: url(Content/img/demo-2-bg.jpg);">
+                    <div class="sl-slide-inner">
+                        <h2 style="font-weight:900">Web <span style="font-weight:300"> Gala<span style="color: #8d5ee1">x</span><span style="color: #b49ddd">y</span></span></h2>
+                        <blockquote><p>Web Galaxy - ваше верное решение</p><cite>#TeamGalaxy</cite></blockquote>
+                        <p class="btn"><a class="anchor" href="#what_we_do">Что мы делаем?</a></p>
+                    </div>
+                </div>
+                <!-- <div class="sl-slide bg-3" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2" style="background-image: url(~/Content/img/demo-3-bg.jpg);">
+                    <div class="sl-slide-inner">
+                        <h2 style="font-weight:900">Web <span style="font-weight:300">Galaxy</h2>
+                        <blockquote><p>Мы - Залог вашего успеха</span></p><cite>#TeamGalaxy</span></cite></blockquote>
+                        <p class="btn"><a href="#">What we do?</a></p>
+                    </div>
+                </div>
+                <div class="sl-slide bg-4" data-orientation="vertical" data-slice1-rotation="10" data-slice2-rotation="-15" data-slice1-scale="1.5" data-slice2-scale="1.5" style="background-image: url(~/Content/img/demo-4-bg.jpg);">
+                    <div class="sl-slide-inner">
+                        <h2 style="font-weight:900">Web <span style="font-weight:300">Galaxy</h2>
+                        <blockquote><p>Мы - Залог вашего успеха</span></p><cite>#TeamGalaxy</span></cite></blockquote>
+                        <p class="btn"><a href="#">What we do?</a></p>
+                    </div>
+                </div> -->
+
+            </div>
+            <!-- /sl-slider -->
+            <nav id="nav-arrows" class="nav-arrows">
+                <span class="nav-arrow-prev">Previous</span>
+                <span class="nav-arrow-next">Next</span>
+            </nav>
+            <nav id="nav-dots" class="nav-dots">
+                <span class="nav-dot-current"></span>
+                <span></span>
+                <!-- <span></span>
+                <span></span> -->
+            </nav>
+        </div><!-- /slider-wrapper -->
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    <div class="wrapper">
+        <div class="about_us" id="about_us">
+            <div class="h2"><h2>О нас</h2></div>
+            <div class="h1"><h1>Web Galaxy</h1></div>
+            <div class="text">
+                <p>
+                <p>В современном мире Интернет занял твердую позицию в нашей обыденной жизни, люди всего мира ежедневно прибегают к интернету, покупая товар, читая новости, общаясь между собой и т.д.</p><br>
+                <p>
+                    В мире среди всех экономических отраслей интернет-торговля развивается наиболее быстрыми темпами.
+                    Учитывая данные бесспорные факты, можно сделать вывод - можно повысить спрос на ваши услуги или товар с помощью интернета. Ведь если нет предложения от вас, не будет и спроса на ваши услуги или товар.
+                </p><br><p>Наша команда предлагает полный спектр веб-услуг, а именно:</p>
+                <ul>
+                    <li><p> • разработка сайта любой сложности,</p></li>
+                    <li><p> • авторский веб-дизайн по вашему вкусу,</p></li>
+                    <li><p> • разработка фирменного стиля и брендбука для вашей компании,</p></li>
+                    <li><p> • СЕО оптимизация сайтов, продвижение сайта в ТОП,</p></li>
+                    <li><p> • продвижение по социальным сетям,</p></li>
+                    <li><p> • копирайтинг.</p></li>
+                </ul>
+            </div>
+        </div>
+        <div class="portfolio" id="portfolio">
+            <div class="h2"><h2>Портфолио</h2></div>
+            <div class="text">
+                <p>Креативность и оригинальность - одно из наших преимуществ.</p>
+            </div>
+            <div class="our_works">
+                <ol>
+                    <li>
+                        <figure class="effect-sarah">
+                            <img src="~/Content/img/coffee-p.jpg" width="350px" height="300px" />
+                            <figcaption>
+                                <h2>Co<span>ffee</span></h2>
+                                <p>Современный привлекательный дизайн для кофейного сайта.</p>
+                                <p><a class="two" rel="group" title="" href="~/Content/img/coffee.jpg"><img src="~/Content/img/magnifier1.png" style="width:32px; height:32px">Смотреть</a></p>
+                            </figcaption>
+                        </figure>
+                    </li>
+                    <li>
+                        <figure class="effect-sarah">
+                            <img src="~/Content/img/furniture-p.jpg" width="350px" height="300px">
+                            <figcaption>
+                                <h2>Fu<span>rniture</span></h2>
+                                <p>Креативный дизайн для мебельного магазина или мебельного производства.</p>
+                                <p><a class="two" rel="group" title="" href="~/Content/img/furniture.jpg"><img src="~/Content/img/magnifier1.png" style="width:32px; height:32px">Смотреть</a></p>
+                            </figcaption>
+                        </figure>
+                    </li>
+                    <li>
+                        <figure class="effect-sarah">
+                            <img src="~/Content/img/photo-p.jpg" width="350px" height="300px">
+                            <figcaption>
+                                <h2>Ph<span>otographer</span></h2>
+                                <p>Ни один пользователь не пройдет мимо такого восхитительного дизайна.</p>
+                                <p><a class="two" rel="group" title="" href="~/Content/img/photo.png"><img src="~/Content/img/magnifier1.png" style="width:32px; height:32px">Смотреть</a></p>
+                            </figcaption>
+                        </figure>
+                    </li>
+                    <li>
+                        <figure class="effect-sarah">
+                            <img src="~/Content/img/dragon-p.jpg" width="350px" height="300px">
+                            <figcaption>
+                                <h2>Dr<span>agon</span></h2>
+                                <p>Дизайн для игрового сайта.</p>
+                                <p><a class="two" rel="group" title="" href="~/Content/img/dragon.jpg"><img src="~/Content/img/magnifier1.png" style="width:32px; height:32px">Смотреть</a></p>
+                            </figcaption>
+                        </figure>
+                    </li>
+                    <li>
+                        <figure class="effect-sarah">
+                            <img src="~/Content/img/texas-p.jpg" width="350px" height="300px">
+                            <figcaption>
+                                <h2>Te<span>xas</span></h2>
+                                <p>Антуражный сайт развлекательного центра "Техас" для детей и взрослых, дизайн выполнен в классическом ковбойском стиле.</p>
+                                <p><a class="two" rel="group" title="" href="~/Content/img/texas.jpg"><img src="~/Content/img/magnifier1.png" style="width:32px; height:32px">Смотреть</a></p>
+                            </figcaption>
+                        </figure>
+                    </li>
+                    <li>
+                        <figure class="effect-sarah">
+                            <img src="~/Content/img/rehouse.jpg" width="350px" height="300px">
+                            <figcaption>
+                                <h2>Re<span>house</span></h2>
+                                <p>Строгий и в то же время оригинальный дизайн сайта Агентства недвижимости "Rehouse Odessa".</p>
+                                <p><a class="two" rel="group" title="" href="~/Content/img/rehouse.jpg"><img src="~/Content/img/magnifier1.png" style="width:32px; height:32px">Смотреть</a></p>
+                            </figcaption>
+                        </figure>
+                    </li>
+                </ol>
+                <p class="btn" style="margin-top: 20px;"><a href="#">Смотреть больше</a></p>
+            </div>
+        </div>
+        <div class="what_we_do" id="what_we_do">
+            <div class="h2"><h2>Что мы делаем?</h2></div>
+            <div class="services">
+                <div class="item1">
+                    <h4>Ux/UI Дизайн</h4>
+                    <p>Авторский дизайн любой тематики.</p>
+                </div>
+                <div class="item2">
+                    <h4>WEB Разработка</h4>
+                    <p>Разработка сайта любой сложности с учетом пожеланий заказчика.</p>
+                </div>
+                <div class="item3">
+                    <h4>SEO оптимизация</h4>
+                    <p>Закажите продвижение сайта в Google.</p>
+                </div>
+                <div class="item6">
+                    <h4>Маркетинг в социальных сетях</h4>
+                    <p>Увеличение продаж через социальные сети.</p>
+                </div>
+                <div class="item4">
+                    <h4>Разработка фирменного стиля</h4>
+                    <p>Графическое отображение концепции вашей компании</p>
+                </div>
+                <div class="item5">
+                    <h4>Системное администрирование</h4>
+                    <p>Техническая поддержка предприятий.</p>
+                </div>
+            </div>            
+        </div>
+
+
+        <div class="our_team">
+            <div class="h2"><h2>Наша команда</h2></div>
+            <div class="text">
+                <!-- <p>Мы команда профессионалов, нацеленных на результат. Lorem ipsum dolosed quia non numquam eius modinumquam eius modinumquam eius modi tempora incidunt.</p> -->
+            </div>
+            <div class="d-carousel">
+                <ul class="carousel">
+                    <li>
+                        <img src="~/Content/img/Kos.png" alt="" width="207px" height="207px" />
+                        <h4>Константин Кравцов  Web дизайн</h4>
+                        <p>Наша картинка. Ваша история.</p>
+                    </li>
+                    <li>
+                        <img src="~/Content/img/aleks.jpg" alt="" width="207px" height="207px" /></a>
+                        <h4>Алексей Кравцов Менеджмент.</h4>
+                        <p>Решать вопросы клиента.</p>
+                    </li>
+                    <li>
+                        <img src="~/Content/img/Serg.jpg" alt="" width="207px" height="207px" />
+                        <h4>Сергей Кожокарь Web Разработка</h4>
+                        <p>Думать по-другому.</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="cooperation">
+            <div class="h2"><h2>Простые шаги на пути к сотрудничеству</h2></div>
+
+            <div class="lets_go">
+                <div class="man">
+                </div>
+                <div class="step1">
+                    <p>Подача заявки и заполнение брифа</p>
+                </div>
+                <div class="step2">
+                    <p>Внесение предоплаты</p>
+                </div>
+                <div class="step3">
+                    <p>Утверждение дизайна</p>
+                </div>
+                <div class="step4">
+                    <p>Запуск сайта</p>
+                </div>
+                <div class="step5">
+                    <p>Сдача проекта</p>
+                </div>
+            </div>
+            <div class="xz">
+                <a href="#openModal" class="modal_window">Заполнить brief...</a>
+            </div>
+            <div id="openModal" class="modalDialog">
+                @Html.Partial("Partial/_sendBriefPartial")
+            </div>
+        </div>
+
+        <div class="our_team">
+            <div class="h2"><h2>Отзывы наших клиентов</h2></div>
+            <div class="d-carousel" id="second">
+                <!-- <ul class="carousel">
+                    <li class="clients">
+                        <img src="~/Content/img/b2.png" alt="" />
+                        <h4><a href="#">Дядя Петя</a></h4>
+                        <h3><a href="#">Директор ООО "По еблу на"</a></h3>
+                        <div class="streak"></div>
+                        <p>m dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
+                    </li>
+                    <li class="clients">
+                        <img src="~/Content/img/b3.png" alt="" />
+                        <h4><a href="#">Дядя Петя</a></h4>
+                        <h3><a href="#">Директор ООО "По еблу на"</a></h3>
+                        <div class="streak"></div>
+                        <p>m dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
+                    </li>
+                    <li class="clients">
+                        <img src="~/Content/img/b2.png" alt="" />
+                        <h4><a href="#">Дядя Петя</a></h4>
+                        <h3><a href="#">Директор ООО "По еблу на"</a></h3>
+                        <div class="streak"></div>
+                        <p>m dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
+                    </li>
+                    <li class="clients">
+                        <img src="~/Content/img/b3.png" alt="" />
+                        <h4><a href="#">Дядя Петя</a></h4>
+                        <h3><a href="#">Директор ООО "По еблу на"</a></h3>
+                        <div class="streak"></div>
+                        <p>m dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
+                    </li>
+                </ul> -->
+                <p id="feedbackBtn" class="btn" style="margin-top: 20px;padding-bottom:0px;"><a href="#" onclick="showFeedbackForm(event);">Оставить отзыв</a></p>
+            </div>
+            <div id="sendFeedback" style="display:none;">
+                @Html.Partial("Partial/_sendFeedbackPartial")
+            </div>
+        </div>
+        <div class="contacts" id="contacts">
+            <div class="h2"><h2>Контакты</h2></div>
+            <div class="information">
+                <div class="info">
+                    <div class="tel"><img src="~/Content/img/tel.png"><p>+38093 695 76 37</p></div>
+                    <div class="gmail"><img src="~/Content/img/mail.png"><p>aleksey@web-galaxy.com.ua</p></div>
+                    <div class="social">
+                        <div class="be"><a href="https://www.behance.net/aleksnonse014a" target="_blank"></a></div>
+                        <div class="fb"><a href="https://www.facebook.com/IGalaxyTeamI/?ref=bookmarks" target="_blank"></a></div>
+                        <div class="ld"><a href=""></a></div>
+                    </div>
+                </div>
+                <div class="feedback" id="sendMail">
+                    @Html.Partial("Partial/_sendMailPartial")
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="logo2">
+                <img src="~/Content/img/logo.png">
+                </a>
+            </div>
+            <p>© 2017 Web-студия "web galaxy"</p>
+            <div id="toTop">▲</div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+    @Scripts.Render("~/bundles/ajax")
+    @Scripts.Render("~/bundles/jqueryval")
+</body>
+</html>
+

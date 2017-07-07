@@ -1,0 +1,24 @@
+﻿@model WebGalaxy.Models.FeedbackModel
+<style>
+    .error {
+        font-size: 12px;
+        color: red;
+    }
+</style>
+
+@using (Ajax.BeginForm("SendFeedback", "Email", null, new AjaxOptions
+{
+    UpdateTargetId = "sendFeedback",
+    OnSuccess = "FeedbackSendComplete"
+}, new { @id = "sendFeedback_form" }))
+
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <input name="Name" maxlength="25" placeholder="Имя" required />
+    <input name="Company" maxlength="35" placeholder="Компания и должность" />
+    <p><textarea name="Message" placeholder="Отзыв" required></textarea></p>
+
+    <button class="applicationButton" type="submit" form="sendfeedback_form">Отправить</button>
+}

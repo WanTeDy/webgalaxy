@@ -164,39 +164,119 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="App_Start\Startup.cs" />
+    <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\BriefModel.cs" />
+    <Compile Include="Models\FeedbackModel.cs" />
+    <Compile Include="Models\MailModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\fancybox\fancy_closebox.png" />
+    <Content Include="Content\fancybox\fancy_left.png" />
+    <Content Include="Content\fancybox\fancy_progress.png" />
+    <Content Include="Content\fancybox\fancy_right.png" />
+    <Content Include="Content\fancybox\fancy_shadow_e.png" />
+    <Content Include="Content\fancybox\fancy_shadow_n.png" />
+    <Content Include="Content\fancybox\fancy_shadow_ne.png" />
+    <Content Include="Content\fancybox\fancy_shadow_nw.png" />
+    <Content Include="Content\fancybox\fancy_shadow_s.png" />
+    <Content Include="Content\fancybox\fancy_shadow_se.png" />
+    <Content Include="Content\fancybox\fancy_shadow_sw.png" />
+    <Content Include="Content\fancybox\fancy_shadow_w.png" />
+    <Content Include="Content\fancybox\fancy_title_left.png" />
+    <Content Include="Content\fancybox\fancy_title_main.png" />
+    <Content Include="Content\fancybox\fancy_title_right.png" />
+    <Content Include="Content\fancybox\jquery-1.3.2.min.js" />
+    <Content Include="Content\fancybox\jquery.easing.1.3.js" />
+    <Content Include="Content\fancybox\jquery.fancybox-1.2.1.pack.js" />
+    <Content Include="Content\fancybox\jquery.fancybox.css" />
+    <Content Include="Content\img\17px.png" />
+    <Content Include="Content\img\analytics.png" />
+    <Content Include="Content\img\b1.png" />
+    <Content Include="Content\img\b2.png" />
+    <Content Include="Content\img\b3.png" />
+    <Content Include="Content\img\be-g.png" />
+    <Content Include="Content\img\be.png" />
+    <Content Include="Content\img\bg.png" />
+    <Content Include="Content\img\bg1.png" />
+    <Content Include="Content\img\bg_portfolio.png" />
+    <Content Include="Content\img\bg_wedo.png" />
+    <Content Include="Content\img\blog-arrows.jpg" />
+    <Content Include="Content\img\carousel.jpg" />
+    <Content Include="Content\img\coffee-p.jpg" />
+    <Content Include="Content\img\coffee.jpg" />
+    <Content Include="Content\img\demo-1-bg.jpg" />
+    <Content Include="Content\img\demo-2-bg.jpg" />
+    <Content Include="Content\img\design.png" />
+    <Content Include="Content\img\dragon-p.jpg" />
+    <Content Include="Content\img\dragon.jpg" />
+    <Content Include="Content\img\eblo.png" />
+    <Content Include="Content\img\fb-g.png" />
+    <Content Include="Content\img\fb.png" />
+    <Content Include="Content\img\feedback_bg.png" />
+    <Content Include="Content\img\furniture-p.jpg" />
+    <Content Include="Content\img\furniture.jpg" />
+    <Content Include="Content\img\html.png" />
+    <Content Include="Content\img\ld-g.png" />
+    <Content Include="Content\img\ld.png" />
+    <Content Include="Content\img\logo.png" />
+    <Content Include="Content\img\logo2.png" />
+    <Content Include="Content\img\logo4.png" />
+    <Content Include="Content\img\magnifier1.png" />
+    <Content Include="Content\img\mail.png" />
+    <Content Include="Content\img\man.png" />
+    <Content Include="Content\img\next.png" />
+    <Content Include="Content\img\photo-p.jpg" />
+    <Content Include="Content\img\photo.png" />
+    <Content Include="Content\img\prev.png" />
+    <Content Include="Content\img\razr.png" />
+    <Content Include="Content\img\rehouse.jpg" />
+    <Content Include="Content\img\step1-g.png" />
+    <Content Include="Content\img\step1.png" />
+    <Content Include="Content\img\step2-g.png" />
+    <Content Include="Content\img\step2.png" />
+    <Content Include="Content\img\step3-g.png" />
+    <Content Include="Content\img\step3.png" />
+    <Content Include="Content\img\step4-g.png" />
+    <Content Include="Content\img\step4.png" />
+    <Content Include="Content\img\step5-g.png" />
+    <Content Include="Content\img\step5.png" />
+    <Content Include="Content\img\tel.png" />
+    <Content Include="Content\img\texas-p.jpg" />
+    <Content Include="Content\img\texas.jpg" />
+    <Content Include="Content\img\totop.png" />
+    <Content Include="Content\reset.css" />
+    <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
+    <Content Include="robots.txt" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\img\Avocode.lnk" />
+    <Content Include="Content\fancybox\Thumbs.db" />
+    <None Include="Properties\PublishProfiles\Smarter.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.ba-cond.min.js" />
+    <Content Include="Scripts\jquery.jcarousel.js" />
+    <Content Include="Scripts\jquery.slitslider.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\modernizr.custom.79639.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
@@ -209,31 +289,14 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\ConfirmEmail.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\ForgotPassword.cshtml" />
-    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\ResetPassword.cshtml" />
-    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\SendCode.cshtml" />
-    <Content Include="Views\Account\VerifyCode.cshtml" />
-    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
-    <Content Include="Views\Manage\ChangePassword.cshtml" />
-    <Content Include="Views\Manage\Index.cshtml" />
-    <Content Include="Views\Manage\ManageLogins.cshtml" />
-    <Content Include="Views\Manage\SetPassword.cshtml" />
-    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
-    <Content Include="Views\Shared\Lockout.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\MailTemplate\UserMailView.cshtml" />
+    <Content Include="Views\MailTemplate\UserFeedbakcView.cshtml" />
+    <Content Include="Views\Shared\Partial\_sendMailPartial.cshtml" />
+    <Content Include="Views\Shared\Partial\_sendFeedbackPartial.cshtml" />
+    <Content Include="Views\MailTemplate\UserBriefView.cshtml" />
+    <Content Include="Views\Shared\Partial\_sendBriefPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -245,6 +308,12 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WebGalaxy.Utils\WebGalaxy.Utils.csproj">
+      <Project>{B9E6A22F-E4D1-4E42-887F-CE688EB3FA3C}</Project>
+      <Name>WebGalaxy.Utils</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

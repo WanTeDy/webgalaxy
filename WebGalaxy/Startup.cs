@@ -1,7 +1,6 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(WebGalaxy.Startup))]
 namespace WebGalaxy
 {
     public partial class Startup
