@@ -166,6 +166,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.cs" />
+    <Compile Include="Areas\en\Controllers\EmailController.cs" />
+    <Compile Include="Areas\en\Controllers\HomeController.cs" />
+    <Compile Include="Areas\en\enAreaRegistration.cs" />
     <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -262,6 +265,11 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\img\Avocode.lnk" />
     <Content Include="Content\fancybox\Thumbs.db" />
+    <Content Include="Areas\en\Views\web.config" />
+    <Content Include="Areas\en\Views\Shared\Partial\_sendBriefPartial.cshtml" />
+    <Content Include="Areas\en\Views\Shared\Partial\_sendFeedbackPartial.cshtml" />
+    <Content Include="Areas\en\Views\Shared\Partial\_sendMailPartial.cshtml" />
+    <Content Include="Areas\en\Views\Home\Index.cshtml" />
     <None Include="Properties\PublishProfiles\Smarter.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -300,6 +308,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\en\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

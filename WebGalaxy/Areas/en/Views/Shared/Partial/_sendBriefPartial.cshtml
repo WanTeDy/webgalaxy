@@ -1,0 +1,59 @@
+﻿@model WebGalaxy.Models.BriefModel
+<style>
+    .error {
+        font-size: 12px;
+        color: red;
+    }
+</style>
+
+<div>
+    <a href="#close" title="Закрыть" class="close">X</a>
+    @using (Ajax.BeginForm("SendBrief", "Email", null, new AjaxOptions
+    {
+        UpdateTargetId = "OpenModal",
+        OnSuccess = "FeedbackSendComplete"
+    }, new { @id = "sendBrief_form" }))
+
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <div class="formflex_check">
+            <p>What type would you classify a development site?</p>
+            <p>
+                @Html.CheckBoxFor(m=>m.Promo, new { @class = "checkbox" }) landing page<Br>
+                @Html.CheckBoxFor(m => m.Corporative, new { @class = "checkbox" }) corporate website<Br>
+                @Html.CheckBoxFor(m => m.Shop, new { @class = "checkbox" }) online store<Br>
+                @Html.CheckBoxFor(m => m.Cutaway, new { @class = "checkbox" }) business card site<Br>
+                @Html.CheckBoxFor(m => m.Promo, new { @class = "checkbox"}) other
+            </p>
+        </div>
+
+
+        <div class="formflex">
+            <h4>What is the name of your company? What kind activity of the company?</h4>
+            <p><textarea name="AboutCompany" placeholder="Message" required ></textarea></p>
+        </div>
+        <div class="formflex">
+            <h4>Give examples of sites that you like.</h4>
+            <p><textarea name="SiteExamples" placeholder="Message" required ></textarea></p>
+        </div>
+        <div class="formflex">
+            <h4>What languages will be used on your website?</h4>
+            <p><textarea name="Languages" placeholder="Message" required ></textarea></p>
+        </div>
+        <div class="formflex">
+            <h4>Timing and budget of the project.</h4>
+            <p><textarea name="RealizationDates" placeholder="Message" required ></textarea></p>
+        </div>
+
+        <div class="formflex_contact">
+            <h4>Your contact details:</h4>
+            <input name="Name" maxlength="25" placeholder="Name" required />
+            <input name="Email" type="email" maxlength="35" placeholder="Email" />
+            <input name="Phone" type="Tel" maxlength="20" placeholder="Phone number" required />
+        </div>
+        <button class="applicationButton" type="submit" form="sendBrief_form">Send</button>
+    }
+
+</div>
